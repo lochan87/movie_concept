@@ -1,0 +1,10 @@
+.env
+.vercel
+.vercelignore
+genai
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+main.py
+vercel.json

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Movie Concept Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 800px;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+    textarea {
+      resize: none;
+    }
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center mb-4">🎬 Movie Concept Generator</h1>
+  
+  <form id="movieForm" method="POST">
+    <div class="card">
+      <div class="mb-3">
+        <label class="form-label">Storyline</label>
+        <textarea class="form-control" name="storyline" rows="3" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Genre</label>
+        <input type="text" class="form-control" name="genre" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Include Script?</label>
+        <select class="form-select" name="include_script" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Include Visuals?</label>
+        <select class="form-select" name="include_visuals" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Indian Related Content?</label>
+        <select class="form-select" name="indian_content" id="indianContentSelect" required onchange="toggleLanguageOptions()">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+      <div class="mb-3" id="languageSection" style="display:none;">
+        <label class="form-label">Select Language</label>
+        <select class="form-select" name="language">
+          <option value="english">English</option>
+          <option value="hindi">Hindi</option>
+          <option value="kannada">Kannada</option>
+        </select>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-light mt-3">🎥 Generate Movie Concept</button>
+      </div>
+    </div>
+  </form>
+
+  {% if output %}
+    <div class="card mt-4">
+      <h5 class="text-center">✨ Generated Movie Concept ✨</h5>
+      <pre style="white-space: pre-wrap;">{{ output }}</pre>
+      <div class="text-center">
+        <button class="btn btn-outline-light mt-3" onclick="downloadContent()">⬇️ Download Content</button>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if character_tones %}
+    <div class="card mt-4">
+      <h5 class="text-center">🎭 Character Tone Analysis</h5>
+      <ul>
+        {% for name, tone in character_tones.items() %}
+          <li><strong>{{ name }}:</strong> {{ tone }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if dialogue_sentiments %}
+    <div class="card mt-4">
+      <h5 class="text-center">💬 Dialogue Sentiments</h5>
+      <p>Positive: {{ dialogue_sentiments['positive'] }} | Negative: {{ dialogue_sentiments['negative'] }} | Neutral: {{ dialogue_sentiments['neutral'] }}</p>
+    </div>
+  {% endif %}
+
+  {% if visual_sentiments %}
+    <div class="card mt-4">
+      <h5 class="text-center">🖼 Scene Visual Sentiments</h5>
+      <p>Positive: {{ visual_sentiments['positive'] }} | Negative: {{ visual_sentiments['negative'] }} | Neutral: {{ visual_sentiments['neutral'] }}</p>
+    </div>
+  {% endif %}
+
+</div>
+
+<footer>
+  Made with ❤️ for Movie Enthusiasts
+</footer>
+
+<script>
+function toggleLanguageOptions() {
+  const indianSelect = document.getElementById('indianContentSelect');
+  const languageSection = document.getElementById('languageSection');
+  if (indianSelect.value === "yes") {
+    languageSection.style.display = 'block';
+  } else {
+    languageSection.style.display = 'none';
+  }
+}
+
+function downloadContent() {
+  const content = document.querySelector('pre').innerText;
+  const blob = new Blob([content], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = "generated_movie_content.txt";
+  link.click();
+
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>

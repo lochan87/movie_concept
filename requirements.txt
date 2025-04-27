@@ -1,0 +1,6 @@
+google-generativeai
+transformers
+torch
+python-dotenv
+textblob
+flask
