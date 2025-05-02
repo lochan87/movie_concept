@@ -46,12 +46,18 @@ Follow the steps below to set up and run the Movie Concept Generator locally:
    cd movie_concept
 ```
 2. **(Optional) Create a Virtual Environment**
+```bash
   python -m venv venv
   source venv\Scripts\activate
+```
 3. **Install Dependencies**
+```bash
   pip install -r requirements.txt
+```
 4. **Run the Application**
+```bash
   python app.py
+```
 
 ---
 
@@ -73,6 +79,19 @@ Follow the steps below to set up and run the Movie Concept Generator locally:
     - 🧾 **Script** (if selected)
     - 🖼️ **Visual Descriptions** (if selected)
 5. ⬇️ **Download the generated content** as a `.txt` file for offline access or sharing.
+
+---
+
+## 🖼️ Screenshots
+
+### 🔹 Web UI
+![Web UI Screenshot](screenshots/web_ui.png)
+
+### 🔹 Sample Input
+![Input Screenshot](screenshots/sample_input.png)
+
+### 🔹 Sample Output
+![Output Screenshot](screenshots/sample_output.png)
 
 ---
 
