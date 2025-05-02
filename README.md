@@ -41,8 +41,10 @@ The **Movie Concept Generator** is an AI-powered creative tool that generates un
 Follow the steps below to set up and run the Movie Concept Generator locally:
 
 1. **Clone the Repository**
+```bash
    git clone https://github.com/lochan87/movie_concept.git
    cd movie_concept
+```
 2. **(Optional) Create a Virtual Environment**
   python -m venv venv
   source venv\Scripts\activate
@@ -57,19 +59,19 @@ Follow the steps below to set up and run the Movie Concept Generator locally:
 
 1. Launch the app via the command line.
 2. In the web UI:
-  - 🧾 **Enter a storyline**
-  - 🎭 **Select a genre**
-  - ✅ **Choose options:**
-    - Include Script  
-    - Include Visuals  
-    - Include Indian Content → Select Language (**Hindi**, **Kannada**, or **English**)
+    - 🧾 **Enter a storyline**
+    - 🎭 **Select a genre**
+    - ✅ **Choose options:**
+      - Include Script  
+      - Include Visuals  
+      - Include Indian Content → Select Language (**Hindi**, **Kannada**, or **English**)
 3. Click the **"Generate"** button.
 4. View the output:
-  - 🎬 **Movie Title**
-  - 👥 **Main Characters**
-  - 📝 **Long Summary**
-  - 🧾 **Script** (if selected)
-  - 🖼️ **Visual Descriptions** (if selected)
+    - 🎬 **Movie Title**
+    - 👥 **Main Characters**
+    - 📝 **Long Summary**
+    - 🧾 **Script** (if selected)
+    - 🖼️ **Visual Descriptions** (if selected)
 5. ⬇️ **Download the generated content** as a `.txt` file for offline access or sharing.
 
 ---
